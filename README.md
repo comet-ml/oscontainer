@@ -21,7 +21,7 @@ docker build -f Dockerfile -t oscontainer .
 ```
 
 Run the image we built within container with specific CPU limits set. 
-For details about setting container resources limits see: [Runtime options with Memory, CPUs, and GPUs](https://docs.docker.com/config/containers/resource_constraints).
+For details about setting container resources limits with Docker, see: [Runtime options with Memory, CPUs, and GPUs](https://docs.docker.com/config/containers/resource_constraints).
 
 The following command will start container and open interactive shell:
 
