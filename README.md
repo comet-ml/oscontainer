@@ -1,3 +1,5 @@
+[![Python package](https://github.com/yaricom/oscontainer/actions/workflows/python-package.yml/badge.svg)](https://github.com/yaricom/oscontainer/actions/workflows/python-package.yml)
+
 # Overview
 
 The simple library to gather CPU and memory limits from within OS Container bases on Linux.
