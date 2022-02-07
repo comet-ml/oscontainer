@@ -1,0 +1,5 @@
+503 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab /sys/fs/cgroup/memory ro,nosuid,nodev,noexec,relatime - cgroup cgroup rw,memory
+504 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab /sys/fs/cgroup/pids ro,nosuid,nodev,noexec,relatime - cgroup cgroup rw,pids
+513 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab /sys/fs/cgroup/cpuset ro,nosuid,nodev,noexec,relatime - cgroup cgroup rw,cpuset
+523 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab /sys/fs/cgroup/cpu ro,nosuid,nodev,noexec,relatime - cgroup cgroup rw,cpu
+529 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab /sys/fs/cgroup/cpuacct ro,nosuid,nodev,noexec,relatime - cgroup cgroup rw,cpuacct

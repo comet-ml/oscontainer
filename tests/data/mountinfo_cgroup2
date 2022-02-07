@@ -1,0 +1,23 @@
+495 401 0:143 / / rw,relatime master:183 - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/4L5OSA7D3XF5FPMSK6XLU2NZ7N:/var/lib/docker/overlay2/l/SKJTZT2MBJ4CFZKBQL2NKJX5OK:/var/lib/docker/overlay2/l/MNRYSAPVNTWOBCFYZMVRWHCKGA:/var/lib/docker/overlay2/l/VVIVOVQPMYE6ALWNXGSHUAQB3B:/var/lib/docker/overlay2/l/4XWOHAHC3IC4KMYQ4NCMI5HDYK:/var/lib/docker/overlay2/l/GQT5SYB7JEBNVYOPB47VVP6TGF:/var/lib/docker/overlay2/l/MJ54E7WRWZKLB5RQPB5QA4ZEAV:/var/lib/docker/overlay2/l/YXXMJMMTDEVQP2ADKY5I6KGOW4:/var/lib/docker/overlay2/l/AJPPIVC6OOLK3S5G5UINFUVUIK:/var/lib/docker/overlay2/l/DXASSZCFYLBTHKNADZ3TVSMODY:/var/lib/docker/overlay2/l/UTB23AT4XVD7WJHRCQBUWDXILT:/var/lib/docker/overlay2/l/7HOQTWL4BWRIL2BWXLWFIY4N7X:/var/lib/docker/overlay2/l/RVMS3KMRSDT26DLN4ODOLKCQNZ:/var/lib/docker/overlay2/l/GTN5OHLV2XGIMV6NQ5RLTIQ7KS,upperdir=/var/lib/docker/overlay2/5fbb4d2c50487cb98e437254a2ea8846e8152ae8e90b918009621c9e71454ca8/diff,workdir=/var/lib/docker/overlay2/5fbb4d2c50487cb98e437254a2ea8846e8152ae8e90b918009621c9e71454ca8/work
+496 495 0:146 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw
+497 495 0:147 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+498 497 0:148 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666
+499 495 0:149 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro
+500 499 0:30 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw
+501 497 0:145 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw
+502 497 0:150 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k
+503 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw
+504 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw
+513 495 254:1 /docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw
+402 497 0:148 /0 /dev/console rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666
+403 496 0:146 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw
+404 496 0:146 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw
+405 496 0:146 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw
+406 496 0:146 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw
+407 496 0:146 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw
+408 496 0:151 / /proc/acpi ro,relatime - tmpfs tmpfs ro
+409 496 0:147 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+410 496 0:147 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+411 496 0:147 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+412 496 0:147 /null /proc/sched_debug rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+413 499 0:152 / /sys/firmware ro,relatime - tmpfs tmpfs ro

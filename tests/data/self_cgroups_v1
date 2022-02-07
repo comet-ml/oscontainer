@@ -1,0 +1,2 @@
+8:memory,cpu,cpuacct,cpuset:/docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab
+12:pids:/docker/containers/4bb4899bb7ba0e8891053352dc4a4bdbd65d038fb21f6d86673ddcd0d06e79ab
