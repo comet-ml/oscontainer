@@ -5,6 +5,8 @@ import pytest
 from oscontainer import NO_LIMIT, PER_CPU_SHARES
 from oscontainer.cgroup_subsystem import CgroupSubsystem
 
+TEST_HOST_CPU_COUNT = 8
+
 
 @pytest.mark.parametrize(
     "quota, period, expected",
@@ -22,7 +24,8 @@ def test_active_processor_count_quota(quota, period, expected):
     sub_system.cpu_period = MagicMock(return_value=period)
     sub_system.cpu_shares = MagicMock(return_value=NO_LIMIT)
 
-    cpu_count = sub_system.active_processor_count(prefer_container_quota=True)
+    cpu_count = sub_system.active_processor_count(prefer_container_quota=True,
+                                                  host_cpu_count=TEST_HOST_CPU_COUNT)
     assert cpu_count == expected, "wrong CPU count"
 
 
@@ -40,7 +43,8 @@ def test_active_processor_count_shares(shares, expected):
     sub_system.cpu_period = MagicMock(return_value=0)
     sub_system.cpu_shares = MagicMock(return_value=shares)
 
-    cpu_count = sub_system.active_processor_count(prefer_container_quota=False)
+    cpu_count = sub_system.active_processor_count(prefer_container_quota=False,
+                                                  host_cpu_count=TEST_HOST_CPU_COUNT)
     assert cpu_count == expected, "wrong CPU count"
 
 
@@ -59,5 +63,6 @@ def test_active_processor_count(quota, period, shares, expected):
     sub_system.cpu_period = MagicMock(return_value=period)
     sub_system.cpu_shares = MagicMock(return_value=shares)
 
-    cpu_count = sub_system.active_processor_count(prefer_container_quota=False)
+    cpu_count = sub_system.active_processor_count(prefer_container_quota=False,
+                                                  host_cpu_count=TEST_HOST_CPU_COUNT)
     assert cpu_count == expected, "wrong CPU count"

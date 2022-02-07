@@ -118,8 +118,8 @@ class CgroupSubsystem(object):
         """
         pass
 
-    def active_processor_count(self, logger=None, prefer_container_quota=False):
-        # type: (Logger, bool) -> int
+    def active_processor_count(self, prefer_container_quota=False, host_cpu_count=None, logger=None):
+        # type: (bool, int, Logger) -> int
         """
         Calculate an appropriate number of active processors to use based on these three inputs:
         * cpu affinity
@@ -148,12 +148,17 @@ class CgroupSubsystem(object):
         If shares and/or quotas have been specified, the resulting number
         returned will never exceed the number of active processors.
 
+        :param prefer_container_quota: If True, return the quota value.
+        If False return the smallest value between shares or quotas.
+        :param host_cpu_count: the number of host CPUs
         :param logger: the logger to use
-        :param prefer_container_quota: If True, return the quota value. If False return the smallest value
-        between shares or quotas.
         :return: the allotted number of CPUs
         """
-        cpu_count = limit_count = multiprocessing.cpu_count()
+        if host_cpu_count is None:
+            cpu_count = multiprocessing.cpu_count()
+        else:
+            cpu_count = host_cpu_count
+        limit_count = cpu_count
         quota_count, share_count = 0, 0
 
         quota = self.cpu_quota()
