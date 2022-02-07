@@ -20,14 +20,16 @@ Build local image with `oscontainer` name.
 docker build -f Dockerfile -t oscontainer . 
 ```
 
-Run it within container with CPU limits set. 
-For details about setting container resources limits see: [Runtime options with Memory, CPUs, and GPUs](https://docs.docker.com/config/containers/resource_constraints)
+Run the image we built within container with specific CPU limits set. 
+For details about setting container resources limits see: [Runtime options with Memory, CPUs, and GPUs](https://docs.docker.com/config/containers/resource_constraints).
+
+The following command will start container and open interactive shell:
 
 ```bash
 docker run -it --cpus=".5" oscontainer /bin/bash
 ```
 
-Now, execute `main.py` script to see detected resource constraints:
+Now, execute `main.py` script within shell to see resource constraints that was detected:
 
 ```bash
 python main.py 
