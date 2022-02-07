@@ -10,7 +10,7 @@ from oscontainer.cgroups import _read_cgroup_infos, _read_mount_points, _read_pr
 from oscontainer.constants import SUBSYS_PIDS, SUBSYS_MEMORY, SUBSYS_CPU, SUBSYS_CPUACCT, SUBSYS_CPUSET, \
     CGROUP_TYPE_V2, CGROUP_TYPE_V1
 
-DATA_PATH = "./data/"
+DATA_PATH = os.path.join(os.path.dirname(__file__), "./data/")
 FILE_PROC_CGROUPS_V2 = DATA_PATH + "proc_cgroups_v2"
 FILE_MOUNTINFO_CGROUP2 = DATA_PATH + "mountinfo_cgroup2"
 FILE_SELF_CGROUPS_V2 = DATA_PATH + "self_cgroups_v2"
