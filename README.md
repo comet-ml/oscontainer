@@ -2,7 +2,7 @@
 
 # Overview
 
-The simple library to gather CPU and memory limits from within OS Container bases on Linux.
+The simple library to gather CPU and memory resource limits from within OS Container bases on Linux.
 
 ## Setup
 
