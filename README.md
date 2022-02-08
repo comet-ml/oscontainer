@@ -12,7 +12,26 @@ Install dependencies
 pip install --no-cache-dir -r requirements.txt
 ```
 
-## Run
+## Usage in code
+
+The library can be used to acquire current limits exposed to the container or process as following:
+
+```python
+from oscontainer import OSContainer
+
+# Get the container instance
+container = OSContainer()
+
+# Get active processors
+cpus_count = container.active_processor_count()
+
+# Get the limit of available memory for this process.
+mem_limit = container.memory_limit_in_bytes()
+```
+
+For extra metrics available see [OSContainer](./oscontainer/os_container.py).
+
+## Run in Docker
 
 To run library in the test container you need to build the docker image and run it as container.
 
@@ -58,22 +77,3 @@ memory usage (bytes): 9908224
          cpuset cpus: 
 ==========================
 ```
-
-## Usage in code
-
-The library can be used to acquire current limits exposed to the container or process as following:
-
-```python
-from oscontainer import OSContainer
-
-# Get the container instance
-container = OSContainer()
-
-# Get active processors
-cpus_count = container.active_processor_count()
-
-# Get the limit of available memory for this process.
-mem_limit = container.memory_limit_in_bytes()
-```
-
-For extra metrics available see [OSContainer](./oscontainer/os_container.py).
