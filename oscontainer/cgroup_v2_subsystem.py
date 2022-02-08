@@ -7,6 +7,7 @@ from oscontainer.utils import limit_from_str
 CPU_WEIGHT = "cpu.weight"
 CPU_MAX = "cpu.max"
 CPU_CPUSET_CPUS = "cpuset.cpus"
+CPU_CPUSET_CPUS_EFFECTIVE = "cpuset.cpus.effective"
 MEMORY_CURRENT = "memory.current"
 MEMORY_MAX = "memory.max"
 
@@ -92,7 +93,10 @@ class CgroupV2Subsystem(CgroupSubsystem):
 
     def cpu_cpuset_cpus(self):
         # type: () -> str
-        return self.unified.read_container_param(CPU_CPUSET_CPUS)
+        cpuset = self.unified.read_container_param(CPU_CPUSET_CPUS)
+        if cpuset is None or cpuset == "":
+            cpuset = self.unified.read_container_param(CPU_CPUSET_CPUS_EFFECTIVE)
+        return cpuset
 
     def memory_usage_in_bytes(self):
         # type: () -> int
