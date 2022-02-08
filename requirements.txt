@@ -1,1 +1,1 @@
-scanf
+backports.functools_lru_cache ; python_version < '2.9'

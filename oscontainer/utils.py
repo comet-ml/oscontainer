@@ -1,7 +1,7 @@
 import logging
 from typing import Any
 
-from scanf import scanf
+from oscontainer.scanf import scanf
 
 from oscontainer.constants import NO_LIMIT
 from oscontainer.errors import OSContainerError

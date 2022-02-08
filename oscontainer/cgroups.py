@@ -1,7 +1,7 @@
 import logging
 from typing import Dict, List, Tuple, Union
 
-from scanf import scanf
+from oscontainer.scanf import scanf
 
 from oscontainer.cgroup_subsystem import CgroupInfo, CgroupSubsystem
 from oscontainer.cgroup_v1_subsystem import CgroupV1Controller, CgroupV1MemoryController, CgroupV1Subsystem
