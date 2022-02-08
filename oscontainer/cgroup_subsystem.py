@@ -155,7 +155,10 @@ class CgroupSubsystem(object):
         :return: the allotted number of CPUs
         """
         if host_cpu_count is None:
-            cpu_count = multiprocessing.cpu_count()
+            try:
+                cpu_count = len(os.sched_getaffinity(0))
+            except AttributeError:
+                cpu_count = multiprocessing.cpu_count()
         else:
             cpu_count = host_cpu_count
         limit_count = cpu_count
