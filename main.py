@@ -1,8 +1,7 @@
 import argparse
 import sys
-import multiprocessing
-import os
 
+import oscontainer
 from oscontainer import OSContainer
 
 
@@ -19,16 +18,7 @@ def main(raw_args=None):
     )
     args = parser.parse_args(raw_args)
     if args.version:
-        print("v1.0.0")
-
-    cpu_affinity = os.sched_getaffinity(0)
-
-    print("System information:")
-    print("==========================")
-    print("   multiprocessing.cpu_count: %r" % multiprocessing.cpu_count())
-    print("      os affinity: %r" % cpu_affinity)
-    print("==========================")
-    print()
+        print(oscontainer.__version__)
 
     container = OSContainer()
     container.print()
