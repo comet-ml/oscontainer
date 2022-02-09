@@ -4,12 +4,10 @@
 
 The simple library to gather CPU and memory resource limits from within OS Container bases on Linux.
 
-## Setup
-
-Install dependencies
+## Install
 
 ```bash
-pip install --no-cache-dir -r requirements.txt
+pip install oscontainer
 ```
 
 ## Usage in code
@@ -22,22 +20,34 @@ from oscontainer import OSContainer
 # Get the container instance
 container = OSContainer()
 
-# Get active processors
-cpus_count = container.active_processor_count()
-
-# Get the limit of available memory for this process.
-mem_limit = container.memory_limit_in_bytes()
+# Check if current process runs inside container
+if container.is_containerized():
+    # Get active processors
+    cpus_count = container.active_processor_count()
+    
+    # Get the limit of available memory for this process.
+    mem_limit = container.memory_limit_in_bytes()
+else:
+    print("No Container support detected")
 ```
 
 For extra metrics available see [OSContainer](./oscontainer/os_container.py).
 
-## Run in Docker
+## Run in Docker from source code
 
 To run library in the test container you need to build the docker image and run it as container.
+
+Checkout the repository.
+
+```bash
+git clone git@github.com:yaricom/oscontainer.git
+```
 
 Build local image with `oscontainer` name.
 
 ```bash
+cd oscontainer
+
 docker build -f Dockerfile -t oscontainer . 
 ```
 
