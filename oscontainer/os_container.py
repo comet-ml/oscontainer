@@ -1,4 +1,6 @@
 import logging
+import multiprocessing
+import os
 from typing import Optional
 
 from oscontainer.cgroups import build_cgroup_subsystem
@@ -13,17 +15,18 @@ class OSContainer(object):
     """
 
     def __init__(self):
-        self.containerized = False
+        self._containerized = False
         try:
             self.cgroup_subsystem = build_cgroup_subsystem()
         except Exception:
-            LOGGER.error("Failed to create cgroup subsystem", exc_info=True)
+            LOGGER.warning("Failed to detect CGROUP subsystem, container not detected.")
+            LOGGER.debug("CGROUP container detection failed", exc_info=True)
             return
 
         self.memory_limit = self.cgroup_subsystem.memory_limit_in_bytes()
         LOGGER.info("Memory Limit is: %d", self.memory_limit)
 
-        self.containerized = True
+        self._containerized = True
 
     def active_processor_count(self, prefer_container_quota=False):
         # type: (bool) -> int
@@ -105,28 +108,51 @@ class OSContainer(object):
         self._validate_containerized()
         return self.memory_limit
 
+    def is_containerized(self):
+        # type: () -> bool
+        """
+        Allows checking if container was detected.
+        :return: True if CGROUP container was detected.
+        """
+        return self._containerized
+
     def print(self):
         """
         Prints collected stats about container
         """
         print("OSContainer:")
         print("==========================")
-        print("   active processors: %d" % self.active_processor_count())
-        print("      container type: %s" % self.container_type())
-        print("--------------------------")
-        print(" > MEMORY:")
-        print("--------------------------")
-        print("memory limit (bytes): %d" % self.memory_limit_in_bytes())
-        print("memory usage (bytes): %d" % self.memory_usage_in_bytes())
-        print("--------------------------")
-        print(" > CPU:")
-        print("--------------------------")
-        print("               quota: %d" % self.cpu_quota())
-        print("              period: %d" % self.cpu_period())
-        print("              shares: %d" % self.cpu_shares())
-        print("         cpuset cpus: %s" % self.cpu_cpuset_cpus())
+        if self._containerized:
+            print("   active processors: %d" % self.active_processor_count())
+            print("      container type: %s" % self.container_type())
+            print("--------------------------")
+            print(" > MEMORY:")
+            print("--------------------------")
+            print("memory limit (bytes): %d" % self.memory_limit_in_bytes())
+            print("memory usage (bytes): %d" % self.memory_usage_in_bytes())
+            print("--------------------------")
+            print(" > CPU:")
+            print("--------------------------")
+            print("               quota: %d" % self.cpu_quota())
+            print("              period: %d" % self.cpu_period())
+            print("              shares: %d" % self.cpu_shares())
+            print("         cpuset cpus: %s" % self.cpu_cpuset_cpus())
+            print("==========================")
+        else:
+            print("No container found")
+            print("==========================")
+
+        # print host system info
+        print("System information:")
+        print("==========================")
+        print("multiprocessing.cpu_count: %r" % multiprocessing.cpu_count())
+        try:
+            cpu_affinity = os.sched_getaffinity(0)
+            print("     process cpu affinity: %r" % cpu_affinity)
+        except:
+            print("Failed to read CPU affinity")
         print("==========================")
 
     def _validate_containerized(self):
-        if not self.containerized:
+        if not self._containerized:
             raise OSContainerError("cgroup subsystem not available")
