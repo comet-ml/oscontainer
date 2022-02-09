@@ -1,5 +1,5 @@
 [![Python package](https://github.com/yaricom/oscontainer/actions/workflows/python-package.yml/badge.svg)](https://github.com/yaricom/oscontainer/actions/workflows/python-package.yml)
-![pypi](https://img.shields.io/pypi/v/oscontainer.svg)
+[![pypi](https://img.shields.io/pypi/v/oscontainer.svg)](https://pypi.org/project/oscontainer/)
 ![versions](https://img.shields.io/pypi/pyversions/oscontainer.svg)
 [![license](https://img.shields.io/github/license/yaricom/oscontainer.svg)](https://github.com/yaricom/oscontainer/blob/master/LICENSE)
 
