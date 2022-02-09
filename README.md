@@ -77,13 +77,18 @@ OSContainer:
  > MEMORY:
 --------------------------
 memory limit (bytes): -1
-memory usage (bytes): 9908224
+memory usage (bytes): 8413184
 --------------------------
  > CPU:
 --------------------------
                quota: 50000
               period: 100000
               shares: -1
-         cpuset cpus: 
+         cpuset cpus: 0-2
+==========================
+System information:
+==========================
+multiprocessing.cpu_count: 3
+     process cpu affinity: {0, 1, 2}
 ==========================
 ```
