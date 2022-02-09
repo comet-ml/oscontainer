@@ -1,7 +1,5 @@
 import argparse
 import sys
-import multiprocessing
-import os
 
 import oscontainer
 from oscontainer import OSContainer
