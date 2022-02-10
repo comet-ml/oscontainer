@@ -158,7 +158,12 @@ class CgroupSubsystem(object):
             try:
                 cpu_count = len(os.sched_getaffinity(0))
             except AttributeError:
-                cpu_count = multiprocessing.cpu_count()
+                try:
+                    cpu_count = multiprocessing.cpu_count() or 1
+                except NotImplementedError:
+                    # os.cpu_count is not available on Python 2 and
+                    # multiprocessing.cpu_count can raise NotImplementedError
+                    cpu_count = 1
         else:
             cpu_count = host_cpu_count
         limit_count = cpu_count

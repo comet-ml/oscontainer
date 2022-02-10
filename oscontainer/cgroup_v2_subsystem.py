@@ -21,7 +21,7 @@ class CgroupV2Controller(CgroupController):
         :param mount_path: the mount path of the cgroup v2 hierarchy
         :param cgroup_path: the cgroup path for the controller
         """
-        super().__init__()
+        super(CgroupV2Controller, self).__init__()
         self.mount_path = mount_path
         self.cgroup_path = cgroup_path
         self.subsystem_path = self._create_subsystem_path(mount_path, cgroup_path)
