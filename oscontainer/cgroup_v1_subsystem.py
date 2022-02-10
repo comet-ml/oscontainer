@@ -26,7 +26,7 @@ class CgroupV1Controller(CgroupController):
         :param mount_point: the mount point of the cgroup controller
         :param cgroup_path: cgroup controller path from /proc/self/cgroup
         """
-        super().__init__()
+        super(CgroupV1Controller).__init__()
         self.root = root
         self.mount_point = mount_point
         self.set_subsystem_path(cgroup_path)
@@ -63,7 +63,7 @@ class CgroupV1MemoryController(CgroupV1Controller):
 
     def __init__(self, root, mount_point, cgroup_path):
         # type: (str, str, str) -> None
-        super().__init__(root, mount_point, cgroup_path)
+        super(CgroupV1MemoryController).__init__(root, mount_point, cgroup_path)
         self.is_hierarchical = False
 
     def uses_mem_hierarchy(self):
